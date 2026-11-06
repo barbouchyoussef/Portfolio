@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './ProjectPage.css';
 
 /* Modal */
 import Modal from "./Modal";

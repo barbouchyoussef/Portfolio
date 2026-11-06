@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import './components/DarkMode/DarkMode.css';
+import './pages/Project/ProjectPage.css';
 
 /* Pages */
 import RouterScrollTop from "./components/ScrollToTop/RouterScrollTop"

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../pages/Project/ProjectPage.css';
 import { FormattedMessage } from 'react-intl';
 
 const projects = [
