@@ -1,0 +1,792 @@
+/********************** Sobre Mi **********************/
+.buttonDownload {
+	display: flex;
+	position: relative;
+	padding: 10px 25px;
+	background-color: transparent;
+	color: var(--black);
+	text-decoration: none;
+	font-size: 1.5rem;
+	text-align: center;
+	gap: .8rem;
+    font-weight: 700;
+    white-space: pre;
+    box-shadow: 7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+}
+
+.buttonDownload i {
+    font-size: 1.4rem;
+}
+
+body.dark .buttonDownload {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.buttonDownload:hover {
+	background-color: var(--black);
+	color: white;
+}
+
+body.dark .buttonDownload:hover {
+    background-color: white;
+}
+
+.buttonDownload:before, .buttonDownload:after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	left: 15px;
+	top: 52%;
+}
+
+.buttonDownload:before,
+.buttonDownload:after {
+    display: none;
+}
+
+/* Download box shape  */
+.buttonDownload:before {
+	width: 10px;
+	height: 2px;
+	border-style: solid;
+	border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.buttonDownload:after {
+	width: 0;
+	height: 0;
+	margin-left: 3px;
+	margin-top: -7px;
+	border-style: solid;
+	border-width: 4px 4px 0 4px;
+	border-color: transparent;
+	border-top-color: inherit;
+	animation: downloadArrow 2s linear infinite;
+	animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+	border-color: #4CC713;
+}
+
+.buttonDownload:hover:after {
+	border-top-color: #4CC713;
+	animation-play-state: running;
+}
+
+/* keyframes for the download icon anim */
+@keyframes downloadArrow {
+	/* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+	0% {
+		margin-top: -7px;
+		opacity: 1;
+	}
+	
+	0.001% {
+		margin-top: -15px;
+		opacity: 0;
+	}
+	
+	50% {
+		opacity: 1;
+	}
+	
+	100% {
+		margin-top: 0;
+		opacity: 0;
+	}
+}
+
+section .row{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    gap: 1.5rem;
+}
+
+section .row .columns{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 0 1rem;
+    background: #fff;
+    box-shadow: var(--box-shadow);
+    border: var(--borde);
+    border-radius: .5rem;
+}
+
+#sobre-mi .row{
+    overflow-x: hidden!important;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+}
+
+#sobre-mi {
+    background: transparent;
+    padding: 5rem 8% 4rem;
+}
+
+#sobre-mi > .heading {
+    display: block;
+    font-size: 4.5rem;
+    color: var(--black);
+    margin: 0 0 3rem;
+}
+
+#sobre-mi .about-photo-slot {
+    min-height: 38rem;
+    height: 46rem;
+    margin-top: -4rem;
+    border: 0;
+    border-radius: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    overflow: hidden;
+}
+
+#sobre-mi .about-photo-slot img {
+    width: min(100%, 34rem);
+    height: 100%;
+    min-height: 0;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Interactive profile-card treatment inspired by the React Bits Lanyard. */
+#sobre-mi .about-lanyard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 38rem;
+    display: flex;
+    justify-content: center;
+    perspective: 900px;
+}
+
+#sobre-mi .about-lanyard-strap {
+    position: absolute;
+    top: -2rem;
+    width: 4.2rem;
+    height: 18rem;
+    border-radius: 2rem;
+    background: repeating-linear-gradient(135deg, #202126 0 1.2rem, #383a42 1.2rem 1.55rem);
+    box-shadow: inset 0 0 0 .25rem rgba(255,255,255,.08), 0 1rem 2rem rgba(0,0,0,.2);
+    transform: rotate(5deg);
+    transform-origin: top center;
+    animation: lanyard-sway 5s ease-in-out infinite;
+}
+
+#sobre-mi .about-lanyard-clamp {
+    position: absolute;
+    left: 50%;
+    bottom: 1.1rem;
+    width: 5.4rem;
+    height: 2rem;
+    border-radius: .5rem;
+    background: linear-gradient(#d6d9df, #737780 45%, #eceff3 55%, #8b8e96);
+    transform: translateX(-50%);
+    box-shadow: 0 .3rem .7rem rgba(0,0,0,.35);
+}
+
+#sobre-mi .about-lanyard-card {
+    position: relative;
+    z-index: 1;
+    width: min(90%, 26rem);
+    aspect-ratio: .72;
+    margin-top: 13rem;
+    overflow: hidden;
+    border-radius: 1.2rem;
+    background: #fff;
+    border: .45rem solid #f5f5f5;
+    box-shadow: 0 1.8rem 3rem rgba(0,0,0,.32), 0 .3rem .8rem rgba(0,0,0,.2);
+    transform-origin: top center;
+    animation: lanyard-card-sway 5s ease-in-out infinite;
+    transition: transform .35s ease, box-shadow .35s ease;
+}
+
+#sobre-mi .about-lanyard-card:hover {
+    transform: rotateY(10deg) rotateZ(-2deg) translateY(-.5rem);
+    box-shadow: 1.4rem 2rem 3rem rgba(0,0,0,.35);
+}
+
+#sobre-mi .about-lanyard-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+#sobre-mi .about-lanyard-hole {
+    position: absolute;
+    z-index: 2;
+    top: .65rem;
+    left: 50%;
+    width: 2.5rem;
+    height: .7rem;
+    border-radius: 1rem;
+    background: #222;
+    border: .22rem solid #eee;
+    transform: translateX(-50%);
+}
+
+@keyframes lanyard-sway { 0%, 100% { transform: rotate(5deg); } 50% { transform: rotate(-5deg); } }
+@keyframes lanyard-card-sway { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(-3deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+    #sobre-mi .about-lanyard-strap,
+    #sobre-mi .about-lanyard-card { animation: none; }
+}
+
+#sobre-mi .row > .col-skill {
+    grid-column: 1 / -1;
+    width: 100%;
+    box-shadow: none;
+    background: transparent;
+    border: 0;
+    padding: 1rem 0;
+}
+
+#sobre-mi .row > .servicios {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.experience-timeline {
+    grid-column: 1 / -1;
+    padding: 4rem 1rem 2rem;
+}
+
+.experience-heading h3 {
+    color: var(--black);
+    font-size: 3.2rem;
+    margin-bottom: .8rem;
+}
+
+.experience-heading p {
+    color: var(--light-color);
+    font-size: 1.6rem;
+    text-transform: none;
+}
+
+.experience-list {
+    position: relative;
+    max-width: 92rem;
+    margin-top: 3rem;
+    padding-left: 3.5rem;
+}
+
+.legacy-experience-list {
+    display: none;
+}
+
+.experience-list::before {
+    content: '';
+    position: absolute;
+    left: .75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #d7d7d7 10%, #d7d7d7 90%, transparent);
+}
+
+.experience-list::after {
+    content: '';
+    position: absolute;
+    left: .75rem;
+    top: 0;
+    width: 2px;
+    height: 0;
+    border-radius: 999px;
+    background: linear-gradient(to bottom, var(--secundario), var(--green));
+    transition: height 1.5s cubic-bezier(.22, 1, .36, 1);
+}
+
+.experience-timeline .experience-entry {
+    opacity: 0;
+    transform: translateY(2rem);
+}
+
+.experience-timeline.aos-animate .experience-list::after {
+    height: 100%;
+}
+
+.experience-timeline.aos-animate .experience-entry {
+    animation: experience-entry-in .7s ease forwards;
+}
+
+.experience-timeline.aos-animate .experience-entry:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.experience-timeline.aos-animate .experience-entry:nth-child(3) {
+    animation-delay: .4s;
+}
+
+@keyframes experience-entry-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .experience-list::after,
+    .experience-timeline .experience-entry {
+        transition: none;
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.experience-entry {
+    position: relative;
+    display: flex;
+    gap: 2rem;
+    min-height: 13rem;
+    padding-bottom: 3rem;
+}
+
+.experience-dot {
+    position: absolute;
+    left: -3.5rem;
+    top: .3rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 3px solid var(--white);
+    border-radius: 50%;
+    background: var(--secundario);
+    box-shadow: 0 0 0 1px var(--secundario);
+}
+
+.experience-period {
+    color: var(--secundario);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.experience-entry h4 {
+    color: var(--black);
+    font-size: 2.2rem;
+    margin: .6rem 0 .8rem;
+    text-transform: none;
+}
+
+.experience-entry p {
+    color: var(--light-color-white);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    text-transform: none;
+}
+
+#sobre-mi .row > .columns:not(.col-skill) {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    justify-content: center;
+    padding: 0;
+}
+
+#sobre-mi .row > .columns:not(.col-skill) h3,
+#sobre-mi .row > .columns:not(.col-skill) h4 {
+    display: none;
+}
+
+#sobre-mi .row > .columns:not(.col-skill) p {
+    color: #000;
+    font-size: 2rem;
+    line-height: 1.45;
+    max-width: 62rem;
+    margin-bottom: 2rem;
+}
+
+#sobre-mi .row > .columns:not(.col-skill) p strong {
+    font-weight: 800;
+}
+
+#sobre-mi .row > .columns:not(.col-skill) .mas-info {
+    border-top: 1px solid #222;
+    padding-top: 2rem;
+    margin-top: 1rem;
+}
+
+section .row .columns h3{
+    font-size: 2rem;
+    color: var(--light-color);
+    margin-bottom: 2rem;
+}
+
+section .row .columns h4{
+    font-size: 2.7rem;
+    color: var(--black);
+    margin-bottom: 2rem;
+    text-transform: none;
+}
+
+section .row .columns p{
+    font-size: 1.7rem;
+    line-height: 2;
+    margin-bottom: 3rem;
+    text-transform: none;
+}
+
+section .row .columns ul li{
+    list-style:none;
+}
+
+section .row .columns ul li p span{
+    font-weight: bold;
+    color: var(--black);
+}
+
+section .row .columns .mas-info{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 2rem 0;
+}
+
+.mas-info-btn{
+    display: flex;
+}
+
+.sobre-mi .row .columns a{
+    margin: 2rem 1rem 1rem 0;
+}
+
+section .row .col-skill h4{
+    font-size: 2.7rem;
+    color: var(--black);
+    margin-bottom: 2.5rem;
+    margin-top: 1rem;
+}
+
+#sobre-mi .col-skill > h3 {
+    text-align: center;
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 2rem;
+}
+
+#sobre-mi .col-skill .skill {
+    justify-content: center;
+    gap: 1rem 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 760px) {
+    #sobre-mi .row {
+        grid-template-columns: 1fr;
+    }
+
+    #sobre-mi .about-photo-slot {
+        min-height: 0;
+        height: min(24rem, 65vw);
+        margin-top: 0;
+    }
+
+    #sobre-mi .about-photo-slot img {
+        min-height: 0;
+    }
+
+    #sobre-mi {
+        padding: 5rem 6% 4rem;
+    }
+
+    #sobre-mi .row > .columns:not(.col-skill) p {
+        font-size: 1.7rem;
+    }
+}
+
+.skill{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.skill > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill > div > h5 {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.skill h5{
+    background: var(--black);
+    text-align: center;
+    border-radius: .5rem;
+    padding: .5rem 0;
+    font-size: 1.1rem;
+    width: 10rem;
+    margin: 0 1.5rem;
+    transform: translate(0px, -75px);
+    opacity: 0;
+    transition: .5s ease all;
+    color: var(--white);
+}
+
+.skill>div:hover h5 {
+    transform: translate(0px, -110px);
+    opacity: 1;
+}
+
+.icons-skils {
+    width: 7rem;
+    height: 7rem;
+    margin: .5rem 3rem;
+}
+
+.icons-skils.fastapi-logo {
+    width: 11rem;
+    object-fit: contain;
+}
+
+.icons-skils.aws-logo {
+    width: 9rem;
+    object-fit: contain;
+}
+
+body.dark .skill .fastapi-logo + h5,
+body.dark .skill .aws-logo + h5 {
+    background: #222 !important;
+    color: var(--white) !important;
+    border: 1px solid #3a3a3a;
+}
+
+section .row .columns .skill img:hover {
+    transform: scale(1.2);
+}
+
+/********************** Sobre-mi-page **********************/
+
+.sobre-mi-seccion{
+    width: 100%;
+    padding-top: 7rem;
+    position: relative;
+    top: 0;
+    transition: 1s;
+    margin-bottom: 2rem;
+    overflow: hidden!important;
+}
+
+.sobre-mi-container {
+    display: grid;
+    grid-template-columns: 30% 68%;
+    grid-gap: 2rem;
+}
+
+.sobre-mi-img-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+}
+
+.sobre-mi-info p{
+    color: #000;
+    font-size: 1.7rem;
+    line-height: 2;
+    text-transform: none;
+    padding-bottom: 1rem;
+}
+
+.sobre-mi-info .btn-info {
+    display: none;
+}
+
+
+.sobre-mi-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+    border-radius: 2rem;
+}
+
+.cv {
+    position: absolute;
+    margin-bottom: 2rem;
+}
+
+.cv:hover{
+    background: var(--white);
+    color: var(--black);
+}
+
+
+/********************** Skill page **********************/
+
+.skill-container{
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5rem;
+}
+
+.skills-img {
+    display: block;
+    margin: 0 auto;
+    height: 15rem;
+}
+
+.skill-name{
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 2rem 0 2rem;
+    color: var(--black);
+}
+
+.skill-info{
+    text-align: center;
+    color: #000;
+    font-size: 1.7rem;
+    line-height: 2;
+    text-transform: none;
+}
+
+/********************** Media Q **********************/
+
+@media (max-width: 990px) {
+    .skill h5{
+        margin: 0 0.5rem;
+    }
+
+    .icons-skils {
+        margin: 1.5rem 2rem;
+    }
+
+    .sobre-mi-container {
+        grid-template-columns: 50% 50%;
+    }
+
+    .skill-container{
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 7rem;
+    }
+}
+
+@media (max-width: 760px) {
+
+    .icons-skils {
+        width: 6rem;
+        height: 6rem;
+        margin: 1.7rem 3rem;
+    }
+
+    section .row .col-skill h4{
+        margin-bottom: 3.5rem;
+    }
+    
+    .skill h5{
+        margin: 0 0.7rem;
+        font-size: 1.3rem;
+        font-weight: bold;
+        transform: translate(0px, -110px);
+        opacity: 1;
+    }
+    
+    .skill>div:hover h5 {
+        transform: translate(0px, -110px);
+    }
+    
+    section .row .columns .skill img:hover {
+        transform: scale(1);
+    }
+
+    .skill{
+        justify-content: center;
+    }
+
+    section .row .columns{
+        text-align: center;
+    }
+
+    section .row .columns .mas-info{
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #sobre-mi .row > .columns:not(.col-skill) .mas-info {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .servicios .row .columns{
+        margin-left: 0;
+    }
+
+    .sobre-mi-container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 570px) {
+
+    .icons-skils {
+        margin: 1.3rem 2rem;
+    }
+
+    .skill-container{
+        grid-gap: 7rem;
+    }
+    .skill h5{
+        background-color: var(--white);
+        color: #000;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transform: translate(0px, -90px);
+    }
+
+    .skill>div:hover h5 {
+        transform: translate(0px, -90px);
+    }
+
+    .sobre-mi-info .btn-info {
+        display: flex;
+        justify-content: center;
+    }
+
+    .sobre-mi-info .hide {
+        display: none;
+    }
+
+    .sobre-mi-info .show {
+        display: block;
+    }
+
+    .skills-img {
+        height: 13rem;
+    }
+
+    .skill-name{
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .skill-container{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 4rem;
+    }
+
+    .skill h5{
+        width: 7rem;
+        margin-left: 1.7rem;
+    }
+
+    .icons a{
+        margin: 5rem 2rem;
+    }
+}

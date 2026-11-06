@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title>Visual Studio Code</title>
+  <path fill="#007acc" d="M93.2 10.2 49.7 51.8 28.1 35.2 11.2 45.6l27.2 25.8-27.2 25.9 16.9 10.4 21.6-16.6 43.5 41.6 23.6-11.8V22z"/>
+  <path fill="#1f9cf0" d="m93.2 10.2-43.5 41.6 21.8 19.6 21.7-19.6z"/>
+  <path fill="#0065a9" d="m49.7 76.1 43.5 41.6V76.1L71.5 56.5z"/>
+  <path fill="#fff" d="m49.7 51.8 21.8 19.6-21.8 19.7-10.9-10.1 11-9.6-11-9.5z" opacity=".9"/>
+</svg>

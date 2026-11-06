@@ -1,0 +1,260 @@
+/********************** header **********************/
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #111111;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 1.8rem 8%;
+}
+
+.site-header .logo {
+  font-family: "Inter", sans-serif;
+  font-size: 2.6rem;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.site-header .logo span {
+  color: var(--white);
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(1.6rem, 2.5vw, 3rem);
+  margin-left: auto;
+}
+
+.navbar a {
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--white);
+  position: relative;
+  white-space: nowrap;
+}
+
+#buttons {
+  display: inline-block;
+  position: fixed;
+}
+
+/* Language controls are currently disabled. */
+#buttons {
+  display: none !important;
+}
+
+.language-selector {
+  width: 3.8rem;
+  height: 3.8rem;
+  margin-left: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  font: inherit;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.language-selector:hover {
+  border-color: var(--secundario);
+  transform: scale(1.05);
+}
+
+#buttons img {
+  height: 2rem;
+  margin-right: 1rem;
+  display: none;
+}
+
+#buttons button {
+  margin-right: 1rem;
+  padding: .4rem .7rem;
+  border: 1px solid var(--black);
+  border-radius: .4rem;
+  background: transparent;
+  color: var(--black);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+#buttons .language-option {
+  min-width: 5.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  margin-right: .5rem;
+  padding: .45rem .65rem;
+  border: 1px solid transparent;
+  border-radius: .5rem;
+  background: transparent;
+  color: var(--black);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+#buttons .language-option:hover {
+  border-color: var(--secundario);
+  background: rgba(21, 184, 202, .12);
+}
+
+body.dark #buttons .language-option {
+  color: var(--white);
+}
+
+body.dark #buttons button {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.navbar img {
+  width: 30px;
+  cursor: pointer;
+}
+
+.navbar a::before {
+  content: "";
+  height: 3px;
+  width: 0;
+  background: var(--green);
+  position: absolute;
+  left: 0;
+  bottom: -1.2rem;
+  transition: 0.4s ease-out;
+}
+
+.navbar a:hover::before {
+  width: 100%;
+}
+
+.navbar .active-link::before,
+.navbar a.active::before {
+  content: "";
+  height: 3px;
+  width: 100%;
+  background: var(--secundario);
+  position: absolute;
+  left: 0;
+  bottom: -1.2rem;
+  transition: 0.4s ease-out;
+}
+
+#acceder-btn .btn {
+  margin-top: 0;
+}
+
+#acceder-btn i {
+  display: none;
+  font-size: 2.5rem;
+  color: var(--light-color);
+  cursor: pointer;
+}
+
+.site-header.activar {
+  box-shadow: var(--box-shadow);
+}
+
+#menu-btn {
+  font-size: 2rem;
+  color: var(--light-color);
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 990px) {
+  .site-header {
+    padding: 2rem 4%;
+  }
+
+}
+
+@media (max-width: 760px) {
+  #menu-btn {
+    display: block;
+  }
+
+  #menu-btn.fa-bars {
+    padding: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .site-header .logo {
+    padding-left: 2rem;
+  }
+
+  .site-header .navbar {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    right: 0;
+    background: #111111;
+    border-top: var(--borde);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  .site-header .navbar.activar {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .site-header .navbar a {
+    display: block;
+    margin: 2rem;
+    font-size: 2rem;
+  }
+
+  .site-header .navbar {
+    display: block;
+  }
+
+  .navbar a:hover {
+    color: var(--secundario) !important;
+  }
+
+  .navbar a::before {
+    content: none;
+  }
+
+  .navbar a.active::before {
+    width: 20%;
+  }
+
+  .nav-proj .active-link::before,
+  .nav-proj a.active::before {
+    width: 100%;
+  }
+
+  .site-header {
+    padding: 1rem 8%;
+  }
+}
+
+@media (max-width: 570px) {
+  .site-header {
+    padding: 1rem 5%;
+  }
+
+  .navbar .active-link::before,
+  .navbar a.active::before {
+    width: 25%;
+  }
+
+  .nav-proj a.active::before {
+    width: 100%;
+  }
+}
