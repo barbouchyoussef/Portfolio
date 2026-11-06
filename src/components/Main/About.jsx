@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import '../../pages/About/AboutPage.css'
 import cv from '../../cv/cv.pdf';
 import vscodeLogo from '../../img/vscode.svg';
-import aboutPhoto from '../../img/photo.png';
+import aboutPhoto from '../../img/photo.webp';
 import awsLogo from '../../img/aws.svg';
 import Service from './Service';
-import Lanyard from '../Lanyard/Lanyard';
-
-/* Multi idioma */
 import { FormattedMessage } from 'react-intl';
+
+const Lanyard = lazy(() => import('../Lanyard/Lanyard'));
+
+const DeferredLanyard = (props) => {
+    const hostRef = useRef(null);
+    const [ready, setReady] = useState(false);
+
+    useEffect(() => {
+        const host = hostRef.current;
+        if (!host) return undefined;
+        if (!('IntersectionObserver' in window)) {
+            setReady(true);
+            return undefined;
+        }
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setReady(true);
+                observer.disconnect();
+            }
+        }, { rootMargin: '320px 0px' });
+        observer.observe(host);
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div ref={hostRef} className="lanyard-deferred" aria-label="Interactive profile card">
+            {ready ? <Suspense fallback={null}><Lanyard {...props} /></Suspense> : null}
+        </div>
+    );
+};
 
 const About = () => (
     <section className="sobre-mi" id="sobre-mi">
@@ -29,7 +56,7 @@ const About = () => (
 
         <div className="row container">
             <div className="about-photo-slot">
-                <Lanyard
+                <DeferredLanyard
                     frontImage={aboutPhoto}
                     backImage={`${process.env.PUBLIC_URL}/motto-card.svg`}
                     imageFit="cover"

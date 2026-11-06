@@ -17,7 +17,7 @@ const RotatingContactMethod = () => {
         return () => window.clearInterval(interval);
     }, []);
 
-    return <b className="site-contacto">{contactMethods[methodIndex]}</b>;
+    return <b key={methodIndex} className="site-contacto" aria-live="polite">{contactMethods[methodIndex]}</b>;
 };
 
 const Contact = () => (
@@ -58,6 +58,19 @@ const Contact = () => (
                 </div>
                 <div className="text">
                     Gmail
+                </div>
+            </a>
+
+            <a href="https://api.whatsapp.com/send?phone=29535083" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+                <div className="layer">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span className="fab fa-whatsapp"></span>
+                </div>
+                <div className="text">
+                    WhatsApp
                 </div>
             </a>
             

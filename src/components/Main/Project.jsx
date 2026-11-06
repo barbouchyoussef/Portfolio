@@ -3,12 +3,12 @@ import '../../pages/Project/ProjectPage.css';
 import { FormattedMessage } from 'react-intl';
 
 const projects = [
-    ['BMUSIC', 'E-commerce musical', "Une expérience de boutique dédiée à l’équipement DJ et à la musique.", "Capture d'écran 2023-12-07 152947.png", ['React', 'JavaScript', 'CSS', 'Stripe']],
-    ['EY Studio — Free CX Audit', 'Audit d’expérience client', 'Une landing page immersive pour comprendre, mesurer et améliorer l’expérience client.', "Capture d'écran 2026-06-04 202844.png", ['React', 'TypeScript', 'Tailwind CSS', 'UX/UI']],
-    ['Maison Ondine', 'Bijouterie fine', 'Une direction artistique premium pour présenter une collection de bijoux et son univers.', "Capture d'écran 2026-11-06 044931.png", ['HTML5', 'CSS', 'JavaScript', 'GSAP']],
-    ['Regard', 'Opticien indépendant', 'Une vitrine éditoriale pour une maison d’optique, avec prise de rendez-vous et catalogue.', "Capture d'écran 2026-11-06 044948.png", ['React', 'JavaScript', 'CSS', 'Responsive UI']],
-    ['TuniTrAIde', 'Analyse boursière', 'Un dashboard financier pour suivre le marché tunisien, les indices et le sentiment du marché.', "Capture d'écran 2026-11-06 045734.png", ['React', 'Node.js', 'Charts', 'API']],
-    ['Weefizz', 'Audit UX/UI', 'Une présentation d’audit qui synthétise l’évaluation de l’expérience et de l’interface.', "Capture d'écran 2026-11-06 050343.png", ['Figma', 'UX Research', 'UI Design', 'Accessibility']]
+    ['BMUSIC', 'E-commerce musical', "Une expérience de boutique dédiée à l’équipement DJ et à la musique.", "Capture décran 2023-12-07 152947.webp", ['React', 'JavaScript', 'CSS', 'Stripe']],
+    ['EY Studio — Free CX Audit', 'Audit d’expérience client', 'Une landing page immersive pour comprendre, mesurer et améliorer l’expérience client.', "Capture décran 2026-06-04 202844.webp", ['React', 'TypeScript', 'Tailwind CSS', 'UX/UI']],
+    ['Maison Ondine', 'Bijouterie fine', 'Une direction artistique premium pour présenter une collection de bijoux et son univers.', "Capture décran 2026-11-06 044931.webp", ['HTML5', 'CSS', 'JavaScript', 'GSAP']],
+    ['Regard', 'Opticien indépendant', 'Une vitrine éditoriale pour une maison d’optique, avec prise de rendez-vous et catalogue.', "Capture décran 2026-11-06 044948.webp", ['React', 'JavaScript', 'CSS', 'Responsive UI']],
+    ['TuniTrAIde', 'Analyse boursière', 'Un dashboard financier pour suivre le marché tunisien, les indices et le sentiment du marché.', "Capture décran 2026-11-06 045734.webp", ['React', 'Node.js', 'Charts', 'API']],
+    ['UX/UI auditor', 'Audit UX/UI', 'Une présentation d’audit qui synthétise l’évaluation de l’expérience et de l’interface.', "Capture décran 2026-11-06 050343.webp", ['Figma', 'UX Research', 'UI Design', 'Accessibility']]
 ].map(([name, type, description, image, technologies]) => ({ name, type, description, image, technologies, demo: '', repo: '' }));
 
 const projectContent = {
@@ -66,7 +66,7 @@ const enhancedProjects = projects.map(project => {
                 ? 'glasses'
                     : project.name === 'Maison Ondine'
                         ? 'jewelry'
-                        : project.name === 'Weefizz'
+                        : project.name === 'UX/UI auditor'
                             ? 'weefizz'
                             : null;
     return key ? { ...project, ...projectContent[key] } : project;
@@ -91,7 +91,7 @@ const Project = () => (
             {[...enhancedProjects, ...enhancedProjects].map((project, index) => (
                 <article className="project-card" key={`${project.name}-${index}`} aria-hidden={index >= projects.length}>
                     <div className="project-card-image-wrap">
-                        <img src={`${process.env.PUBLIC_URL}/projects/${encodeURIComponent(project.image)}`} alt={`${project.name} project preview`} className="project-card-image" />
+                        <img src={`${process.env.PUBLIC_URL}/projects/${encodeURIComponent(project.image)}`} alt={`${project.name} project preview`} className="project-card-image" loading="lazy" decoding="async" width="1280" height="720" />
                         <span className="project-card-number">{String(index + 1).padStart(2, '0')}</span>
                     </div>
                     <div className="project-card-content">

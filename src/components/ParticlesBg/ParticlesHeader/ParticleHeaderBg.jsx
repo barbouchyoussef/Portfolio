@@ -1,25 +1,26 @@
-import React from "react";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+import React, { lazy, Suspense, useEffect, useState } from "react";
+const Particles = lazy(() => import("react-tsparticles"));
 
 export default function ParticleHeaderBg() {
+    const [enabled, setEnabled] = useState(false);
+    useEffect(() => {
+      const start = () => setEnabled(true);
+      if ('requestIdleCallback' in window) {
+        const id = window.requestIdleCallback(start, { timeout: 1500 });
+        return () => window.cancelIdleCallback(id);
+      }
+      const id = window.setTimeout(start, 250);
+      return () => window.clearTimeout(id);
+    }, []);
+
     const particlesInit = async (main) => {
-        console.log(main);
-    
-        // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
-        // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-        // starting from v2 you can add only the features you need reducing the bundle size
+        const { loadFull } = await import('tsparticles');
         await loadFull(main);
       };
-    
-      const particlesLoaded = (container) => {
-        console.log(container);
-      };
       return (
-        <Particles
+        <Suspense fallback={null}>{enabled && <Particles
           id="tsparticles"
           init={particlesInit}
-          loaded={particlesLoaded}
           className="particles-2-css"
       options={{
         background: {
@@ -318,6 +319,6 @@ export default function ParticleHeaderBg() {
           },
         },
       }}
-    ></Particles>
+    ></Particles>}</Suspense>
   );
 }

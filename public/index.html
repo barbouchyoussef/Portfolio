@@ -9,6 +9,9 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://unpkg.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -17,11 +20,10 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script defer src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init({
-        duration: 700,
-        once: true,
+      window.addEventListener('load', function () {
+        if (window.AOS) window.AOS.init({ duration: 700, once: true });
       });
     </script>
   </body>
