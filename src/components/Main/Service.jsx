@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../pages/Service/ServicesPage.css';
+import useScrollReveal from '../../hooks/useScrollReveal';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -12,13 +13,14 @@ const services = [
     { icon: 'fa-tachometer-alt', titleId: 'optimization', descriptionId: 'optimization-info' }
 ];
 
-const Service = ({ fullPage = false }) => (
+const Service = ({ fullPage = false }) => {
+    const revealRef = useScrollReveal();
+
+    return (
     <section
-        className={`servicios${fullPage ? ' servicios--page' : ''}`}
+        ref={revealRef}
+        className={`servicios scroll-reveal${fullPage ? ' servicios--page' : ''}`}
         id="servicios"
-        data-aos="fade-up"
-        data-aos-delay="350"
-        data-aos-duration="800"
     >
         <div className="services-shell">
             <header className="section-heading services-heading">
@@ -57,6 +59,7 @@ const Service = ({ fullPage = false }) => (
             </div>
         </div>
     </section>
-);
+    );
+};
 
 export default React.memo(Service);

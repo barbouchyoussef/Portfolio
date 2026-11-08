@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../pages/Contact/ContactPage.css'
+import useScrollReveal from '../../hooks/useScrollReveal';
 
 /* Multi idioma */
 import { FormattedMessage } from 'react-intl';
@@ -20,9 +21,11 @@ const RotatingContactMethod = () => {
     return <b key={methodIndex} className="site-contacto" aria-live="polite">{contactMethods[methodIndex]}</b>;
 };
 
-const Contact = () => (
+const Contact = () => {
+    const revealRef = useScrollReveal();
 
-    <section className="contactos" id="contactos">
+    return (
+    <section ref={revealRef} className="contactos scroll-reveal" id="contactos">
 
         <header className="section-heading contact-heading">
             <span className="section-kicker">
@@ -38,7 +41,7 @@ const Contact = () => (
                 />
             </p>
         </header>
-        <h3 className="titulo" data-aos="fade-left" data-aos-delay="300">
+        <h3 className="titulo contact-info-reveal">
             <FormattedMessage
                 id='contact-info'
                 defaultMessage='Contact me by: '
@@ -48,7 +51,7 @@ const Contact = () => (
         </h3>
 
         <div className="icons">
-            <a href="mailto:barbouchyoussef34@gmail.com" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a className="contact-link-reveal" href="mailto:barbouchyoussef34@gmail.com" target="_blank" rel="noopener noreferrer">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -61,7 +64,7 @@ const Contact = () => (
                 </div>
             </a>
 
-            <a href="https://api.whatsapp.com/send?phone=29535083" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a className="contact-link-reveal" href="https://api.whatsapp.com/send?phone=29535083" target="_blank" rel="noopener noreferrer">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -74,7 +77,7 @@ const Contact = () => (
                 </div>
             </a>
             
-            <a href="https://www.instagram.com/yousseffbarbouch/" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a className="contact-link-reveal" href="https://www.instagram.com/yousseffbarbouch/" target="_blank" rel="noopener noreferrer">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -87,7 +90,7 @@ const Contact = () => (
                 </div>
             </a>
             
-            <a href="https://www.linkedin.com/in/youssefbarbouch/" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a className="contact-link-reveal" href="https://www.linkedin.com/in/youssefbarbouch/" target="_blank" rel="noopener noreferrer">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -99,7 +102,7 @@ const Contact = () => (
                     Linkedin
                 </div>
             </a>
-            <a href="https://github.com/barbouchyoussef/" target="_blank" rel="noopener noreferrer" data-aos="zoom-in">
+            <a className="contact-link-reveal" href="https://github.com/barbouchyoussef/" target="_blank" rel="noopener noreferrer">
                 <div className="layer">
                     <span></span>
                     <span></span>
@@ -113,6 +116,7 @@ const Contact = () => (
             </a>
         </div>
     </section>
-);
+    );
+};
 
 export default React.memo(Contact);

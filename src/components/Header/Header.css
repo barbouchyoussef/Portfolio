@@ -13,6 +13,14 @@
   padding: 1.8rem 8%;
 }
 
+/* The navbar must remain stable during refresh and should not inherit
+   page-load transitions from the global stylesheet. */
+.site-header,
+.site-header * {
+  animation: none !important;
+  transition: none !important;
+}
+
 .site-header .logo {
   font-family: "Inter", sans-serif;
   font-size: 2.6rem;

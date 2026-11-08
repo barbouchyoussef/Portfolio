@@ -4,7 +4,7 @@
   max-width: 118rem;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
   gap: 2.4rem;
 }
 
@@ -46,7 +46,12 @@
 .project-card-button:not(.project-card-button-secondary).is-disabled { color: #fff; background: #2563eb; border-color: #2563eb; }
 .project-card-button.project-card-button-secondary.is-disabled { color: #6b7280; background: #fff; border-color: #d1d5db; }
 .project-card-button.is-disabled:hover { transform: none; box-shadow: none; }
-.project-card-actions .project-card-button { flex: 1 1 13rem; }
+.project-card-actions .project-card-button {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
 .project-card-actions .project-card-button,
 .project-card-actions .project-card-button:hover,
 .project-card-actions .project-card-button:visited,
@@ -69,26 +74,21 @@ body.dark .project-card-button-secondary { color: var(--white); border-color: #5
 
 /* Continuous horizontal project showcase. */
 .project-cards {
+  width: 100%;
   max-width: 100%;
   overflow: hidden;
   padding: 1rem 0 2rem;
 }
 
 .project-card-track {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
-  width: max-content;
+  width: 100%;
   gap: 2.4rem;
-  animation: projects-marquee 52s linear infinite;
-}
-
-.project-cards:hover .project-card-track,
-.project-cards:focus-within .project-card-track {
-  animation-play-state: paused;
 }
 
 .project-card-track .project-card {
-  flex: 0 0 clamp(28rem, 31vw, 38rem);
   display: flex;
   flex-direction: column;
 }
@@ -127,14 +127,11 @@ body.dark .project-card-button-secondary { color: var(--white); border-color: #5
   min-height: 4.2rem;
 }
 
-@keyframes projects-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(calc(-50% - 1.2rem)); }
-}
-
 @media (max-width: 560px) {
-  .project-card-track .project-card { flex-basis: min(82vw, 32rem); }
-  .project-card-track { gap: 1.4rem; animation-duration: 42s; }
+  .project-card-track {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
 }
 
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import useScrollReveal from '../../hooks/useScrollReveal';
 
 const projects = [
     ['BMUSIC', 'E-commerce musical', "Une expérience de boutique dédiée à l’équipement DJ et à la musique.", "Capture décran 2023-12-07 152947.webp", ['React', 'JavaScript', 'CSS', 'Stripe']],
@@ -7,7 +8,7 @@ const projects = [
     ['Maison Ondine', 'Bijouterie fine', 'Une direction artistique premium pour présenter une collection de bijoux et son univers.', "Capture décran 2026-11-06 044931.webp", ['HTML5', 'CSS', 'JavaScript', 'GSAP']],
     ['Regard', 'Opticien indépendant', 'Une vitrine éditoriale pour une maison d’optique, avec prise de rendez-vous et catalogue.', "Capture décran 2026-11-06 044948.webp", ['React', 'JavaScript', 'CSS', 'Responsive UI']],
     ['TuniTrAIde', 'Analyse boursière', 'Un dashboard financier pour suivre le marché tunisien, les indices et le sentiment du marché.', "Capture décran 2026-11-06 045734.webp", ['React', 'Node.js', 'Charts', 'API']],
-    ['UX/UI auditor', 'Audit UX/UI', 'Une présentation d’audit qui synthétise l’évaluation de l’expérience et de l’interface.', "Capture décran 2026-11-06 050343.webp", ['Figma', 'UX Research', 'UI Design', 'Accessibility']]
+    ['UX/UI auditor', 'Agent IA d’audit UX/UI', 'Un agent IA qui analyse une interface et génère un audit UX/UI actionnable.', "Capture décran 2026-11-06 050343.webp", ['AI', 'UX/UI', 'UX Research', 'Accessibility']]
 ].map(([name, type, description, image, technologies]) => ({ name, type, description, image, technologies, demo: '', repo: '' }));
 
 const projectContent = {
@@ -71,8 +72,11 @@ const enhancedProjects = projects.map(project => {
     return key ? { ...project, ...projectContent[key] } : project;
 });
 
-const Project = () => (
-    <section className="proyectos" id="proyectos">
+const Project = () => {
+    const revealRef = useScrollReveal();
+
+    return (
+    <section ref={revealRef} className="proyectos scroll-reveal" id="proyectos">
         <header className="section-heading projects-heading">
             <span className="section-kicker">
                 <FormattedMessage id="projects-kicker" defaultMessage="What I've built" />
@@ -85,9 +89,9 @@ const Project = () => (
                 />
             </p>
         </header>
-        <div className="project-cards" aria-label="Project showcase carousel">
+        <div className="project-cards" aria-label="Project cards">
             <div className="project-card-track">
-            {[...enhancedProjects, ...enhancedProjects].map((project, index) => (
+            {enhancedProjects.map((project, index) => (
                 <article className="project-card" key={`${project.name}-${index}`} aria-hidden={index >= projects.length}>
                     <div className="project-card-image-wrap">
                         <img src={`${process.env.PUBLIC_URL}/projects/${encodeURIComponent(project.image)}`} alt={`${project.name} project preview`} className="project-card-image" loading="lazy" decoding="async" width="1280" height="720" />
@@ -114,6 +118,7 @@ const Project = () => (
             </div>
         </div>
     </section>
-);
+    );
+};
 
 export default React.memo(Project);

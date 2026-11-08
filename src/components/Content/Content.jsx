@@ -8,11 +8,22 @@ import { Link } from 'react-scroll';
 /* Multi idioma */
 import { FormattedMessage } from 'react-intl';
 
-const Content = () => (
+const Content = () => {
+    const [particlesReady, setParticlesReady] = React.useState(false);
+    const handleParticlesReady = React.useCallback(() => {
+        window.setTimeout(() => setParticlesReady(true), 1000);
+    }, []);
+
+    return (
     <div className="contenido">
-        <section className="inicio" id="inicio">
-            <ParticleHeaderBg />
-        
+        <section className={`inicio${particlesReady ? ' particles-ready' : ''}`} id="inicio">
+            <ParticleHeaderBg onReady={handleParticlesReady} />
+            {!particlesReady && (
+                <div className="hero-loading" role="status" aria-label="Loading hero">
+                    <span className="hero-loading-spinner" aria-hidden="true"></span>
+                </div>
+            )}
+
             <div className="titulo">
             
                 <p data-aos="fade-up" data-aos-delay="600">
@@ -76,6 +87,7 @@ const Content = () => (
             </div>
         </section>
     </div>
-);
+    );
+};
 
 export default Content;

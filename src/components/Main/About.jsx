@@ -4,7 +4,6 @@ import cv from '../../cv/cv.pdf';
 import vscodeLogo from '../../img/vscode.svg';
 import aboutPhoto from '../../img/photo.webp';
 import awsLogo from '../../img/aws.svg';
-import Service from './Service';
 import { FormattedMessage } from 'react-intl';
 
 const Lanyard = lazy(() => import('../Lanyard/Lanyard'));
@@ -123,7 +122,6 @@ const About = () => (
                     <article className="experience-entry"><span className="experience-dot"></span><div><span className="experience-period"><FormattedMessage id="experience-learning-period" defaultMessage="Ongoing" /></span><h4><FormattedMessage id="experience-learning-title" defaultMessage="Continuous Learning" /></h4><p><FormattedMessage id="experience-learning-description" defaultMessage="Exploring new technologies, automation ideas and better engineering practices." /></p></div></article>
                 </div>
             </div>
-            <Service />
             <div className="columns col-skill" data-aos="fade-left" data-aos-delay="350">
                 <h3><FormattedMessage id="skills-title" defaultMessage="Skills" /></h3>
                 <h4>Front-End</h4>

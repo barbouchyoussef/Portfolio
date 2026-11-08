@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 const Particles = lazy(() => import("react-tsparticles"));
 
-export default function ParticleHeaderBg() {
+export default function ParticleHeaderBg({ onReady }) {
     const [enabled, setEnabled] = useState(false);
     useEffect(() => {
       const start = () => setEnabled(true);
@@ -21,6 +21,7 @@ export default function ParticleHeaderBg() {
         <Suspense fallback={null}>{enabled && <Particles
           id="tsparticles"
           init={particlesInit}
+          loaded={onReady}
           className="particles-2-css"
       options={{
         background: {

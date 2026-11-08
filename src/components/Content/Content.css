@@ -11,7 +11,70 @@
 .inicio{
     display: flex;
     justify-content: center;
-    
+    position: relative;
+    min-height: 100vh;
+}
+
+.hero-loading {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: #000;
+    display: grid;
+    place-items: center;
+}
+
+.hero-loading-spinner {
+    width: 4.2rem;
+    height: 4.2rem;
+    border: .35rem solid rgba(255, 255, 255, .25);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: hero-loading-spin .8s linear infinite;
+}
+
+@keyframes hero-loading-spin {
+    to { transform: rotate(360deg); }
+}
+
+.inicio:not(.particles-ready) .titulo {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.inicio.particles-ready .titulo {
+    animation: hero-content-reveal .7s ease-out both;
+}
+
+@keyframes hero-content-reveal {
+    from { opacity: 0; transform: translateY(1.2rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Start hero content animations only after the particle loading screen has
+   finished, rather than letting AOS animate behind the loader. */
+.inicio.particles-ready .titulo > * {
+    animation: hero-element-reveal .6s ease-out both;
+}
+
+.inicio.particles-ready .titulo > p:nth-child(1) { animation-delay: .1s; }
+.inicio.particles-ready .titulo > h1 { animation-delay: .2s; }
+.inicio.particles-ready .titulo > p:nth-child(3) { animation-delay: .3s; }
+.inicio.particles-ready .titulo > p:nth-child(4) { animation-delay: .4s; }
+.inicio.particles-ready .titulo > .redes-sociales,
+.inicio.particles-ready .titulo > .wrapper { animation-delay: .5s; }
+
+@keyframes hero-element-reveal {
+    from { opacity: 0; transform: translateY(1rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-loading-spinner,
+    .inicio.particles-ready .titulo,
+    .inicio.particles-ready .titulo > * {
+        animation: none;
+    }
 }
 
 .inicio .titulo{
@@ -133,8 +196,9 @@
     width: 30px;
     border: 2px solid var(--white);
     position: absolute;
-    left: 49%;
+    left: 50%;
     bottom: 20px;
+    transform: translateX(-50%);
     border-radius: 50px;
     cursor: pointer;
 }
@@ -203,7 +267,7 @@ body.dark .scroll-down::after {
     }
 
     .scroll-down {
-        left: 48%;
+        left: 50%;
         bottom: 50px;
     }
 }
