@@ -8,8 +8,8 @@ const langContext = React.createContext();
 
 
 const LangProvider = ({children}) => {
-    let localePorDefecto;
-	let mensajesPorDefecto;
+    let localePorDefecto = 'en-US';
+	let mensajesPorDefecto = MensajeIngles;
 	const lang = localStorage.getItem('lang');
 
 	if(lang){

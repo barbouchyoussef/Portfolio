@@ -51,7 +51,7 @@ const Service = ({ fullPage = false }) => {
                             <FormattedMessage id={service.titleId} />
                         </h3>
                         <p>
-                            <FormattedMessage id={service.descriptionId} />
+                            <FormattedMessage id={service.descriptionId} defaultMessage="" />
                         </p>
                         <span className="service-card-arrow" aria-hidden="true">↗</span>
                     </article>
