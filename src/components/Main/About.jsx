@@ -11,6 +11,21 @@ const Lanyard = lazy(() => import('../Lanyard/Lanyard'));
 const DeferredLanyard = (props) => {
     const hostRef = useRef(null);
     const [ready, setReady] = useState(false);
+    const [assetsReady, setAssetsReady] = useState(false);
+
+    useEffect(() => {
+        const imageUrls = [props.frontImage, props.backImage].filter(Boolean);
+        let cancelled = false;
+        Promise.all(imageUrls.map((url) => new Promise((resolve) => {
+            const image = new Image();
+            image.onload = resolve;
+            image.onerror = resolve;
+            image.src = url;
+        }))).then(() => {
+            if (!cancelled) setAssetsReady(true);
+        });
+        return () => { cancelled = true; };
+    }, [props.frontImage, props.backImage]);
 
     useEffect(() => {
         const host = hostRef.current;
@@ -31,7 +46,7 @@ const DeferredLanyard = (props) => {
 
     return (
         <div ref={hostRef} className="lanyard-deferred" aria-label="Interactive profile card">
-            {ready ? <Suspense fallback={null}><Lanyard {...props} /></Suspense> : null}
+            {ready && assetsReady ? <Suspense fallback={null}><Lanyard {...props} /></Suspense> : null}
         </div>
     );
 };
@@ -59,6 +74,7 @@ const About = () => (
                     frontImage={aboutPhoto}
                     backImage={`${process.env.PUBLIC_URL || ''}/motto-card.svg`}
                     imageFit="cover"
+                    cardColor="#111318"
                     orientation="portrait"
                     finish="matte"
                     anchor="center"
