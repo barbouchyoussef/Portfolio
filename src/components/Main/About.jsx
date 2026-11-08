@@ -57,7 +57,7 @@ const About = () => (
             <div className="about-photo-slot">
                 <DeferredLanyard
                     frontImage={aboutPhoto}
-                    backImage={`${process.env.PUBLIC_URL}/motto-card.svg`}
+                    backImage={`${process.env.PUBLIC_URL || ''}/motto-card.svg`}
                     imageFit="cover"
                     orientation="portrait"
                     finish="matte"

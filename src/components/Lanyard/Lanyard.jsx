@@ -905,8 +905,6 @@ const Lanyard = ({
         frontCanvas.height = height;
         backCanvas.width = width;
         backCanvas.height = height;
-        frontTexture.dispose();
-        backTexture.dispose();
       }
       paintFace(frontCanvas, images.front, color, s.imageFit);
       paintFace(backCanvas, images.back || images.front, color, s.imageFit);
@@ -919,7 +917,6 @@ const Lanyard = ({
       const s = settingsRef.current;
       tileRatio = paintStrap(strapCanvas, images.strap, parseColor(s.strapColor, [0.07, 0.07, 0.07]));
       weave.repeat.set(2, 2 * tileRatio);
-      strapTexture.dispose();
       strapTexture.needsUpdate = true;
       start();
     };
