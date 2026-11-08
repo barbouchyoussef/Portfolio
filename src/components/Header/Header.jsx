@@ -36,31 +36,31 @@ const Header = () => {
             </NavLink>
 
             <nav className="navbar">
-                <Link to="inicio" spy={true} offset={-150} href="#inicio">
+                <Link to="home" spy={true} offset={-150} href="#home">
                     <FormattedMessage
                         id='home'
                         defaultMessage='Home'
                     />
                 </Link>
-                <Link to="sobre-mi" spy={true} offset={-150} href="#sobre-mi">
+                <Link to="about" spy={true} offset={-150} href="#about">
                     <FormattedMessage
                         id='about'
                         defaultMessage='About me'
                     />
                 </Link>
-                <Link to="servicios" spy={true} offset={-150} href="#servicios">
+                <Link to="services" spy={true} offset={-150} href="#services">
                     <FormattedMessage
                         id='services'
                         defaultMessage='Services'
                     />
                 </Link>
-                <Link to="proyectos" spy={true} offset={-150} href="#proyectos">
+                <Link to="projects" spy={true} offset={-150} href="#projects">
                     <FormattedMessage
                         id='projects'
                         defaultMessage='Projects'
                     />
                 </Link>
-                <Link to="contactos" spy={true} offset={-150} href="#contactos">
+                <Link to="contact" spy={true} offset={-150} href="#contact">
                     <FormattedMessage
                         id='contact'
                         defaultMessage='Contact'

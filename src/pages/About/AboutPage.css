@@ -116,26 +116,26 @@ section .row .columns{
     border-radius: .5rem;
 }
 
-#sobre-mi .row{
+#about .row{
     overflow-x: hidden!important;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 3rem;
 }
 
-#sobre-mi {
+#about {
     background: transparent;
     padding: 5rem 8% 4rem;
 }
 
-#sobre-mi > .heading {
+#about > .heading {
     display: block;
     font-size: 4.5rem;
     color: var(--black);
     margin: 0 0 3rem;
 }
 
-#sobre-mi .about-photo-slot {
+#about .about-photo-slot {
     min-height: 38rem;
     height: 46rem;
     margin-top: -4rem;
@@ -148,7 +148,7 @@ section .row .columns{
     overflow: hidden;
 }
 
-#sobre-mi .about-photo-slot img {
+#about .about-photo-slot img {
     width: min(100%, 34rem);
     height: 100%;
     min-height: 0;
@@ -158,7 +158,7 @@ section .row .columns{
 }
 
 /* Interactive profile-card treatment inspired by the React Bits Lanyard. */
-#sobre-mi .about-lanyard {
+#about .about-lanyard {
     position: relative;
     width: 100%;
     height: 100%;
@@ -168,13 +168,13 @@ section .row .columns{
     perspective: 900px;
 }
 
-#sobre-mi .lanyard-deferred {
+#about .lanyard-deferred {
     width: 100%;
     height: 100%;
     min-height: 38rem;
 }
 
-#sobre-mi .about-lanyard-strap {
+#about .about-lanyard-strap {
     position: absolute;
     top: -2rem;
     width: 4.2rem;
@@ -187,7 +187,7 @@ section .row .columns{
     animation: lanyard-sway 5s ease-in-out infinite;
 }
 
-#sobre-mi .about-lanyard-clamp {
+#about .about-lanyard-clamp {
     position: absolute;
     left: 50%;
     bottom: 1.1rem;
@@ -199,7 +199,7 @@ section .row .columns{
     box-shadow: 0 .3rem .7rem rgba(0,0,0,.35);
 }
 
-#sobre-mi .about-lanyard-card {
+#about .about-lanyard-card {
     position: relative;
     z-index: 1;
     width: min(90%, 26rem);
@@ -215,19 +215,19 @@ section .row .columns{
     transition: transform .35s ease, box-shadow .35s ease;
 }
 
-#sobre-mi .about-lanyard-card:hover {
+#about .about-lanyard-card:hover {
     transform: rotateY(10deg) rotateZ(-2deg) translateY(-.5rem);
     box-shadow: 1.4rem 2rem 3rem rgba(0,0,0,.35);
 }
 
-#sobre-mi .about-lanyard-card img {
+#about .about-lanyard-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
 }
 
-#sobre-mi .about-lanyard-hole {
+#about .about-lanyard-hole {
     position: absolute;
     z-index: 2;
     top: .65rem;
@@ -244,11 +244,11 @@ section .row .columns{
 @keyframes lanyard-card-sway { 0%, 100% { transform: rotate(2deg); } 50% { transform: rotate(-3deg); } }
 
 @media (prefers-reduced-motion: reduce) {
-    #sobre-mi .about-lanyard-strap,
-    #sobre-mi .about-lanyard-card { animation: none; }
+    #about .about-lanyard-strap,
+    #about .about-lanyard-card { animation: none; }
 }
 
-#sobre-mi .row > .col-skill {
+#about .row > .col-skill {
     grid-column: 1 / -1;
     width: 100%;
     box-shadow: none;
@@ -257,7 +257,7 @@ section .row .columns{
     padding: 1rem 0;
 }
 
-#sobre-mi .row > .servicios {
+#about .row > .servicios {
     grid-column: 1 / -1;
     width: 100%;
     padding: 2rem 0;
@@ -391,7 +391,7 @@ section .row .columns{
     text-transform: none;
 }
 
-#sobre-mi .row > .columns:not(.col-skill) {
+#about .row > .columns:not(.col-skill) {
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -399,12 +399,12 @@ section .row .columns{
     padding: 0;
 }
 
-#sobre-mi .row > .columns:not(.col-skill) h3,
-#sobre-mi .row > .columns:not(.col-skill) h4 {
+#about .row > .columns:not(.col-skill) h3,
+#about .row > .columns:not(.col-skill) h4 {
     display: none;
 }
 
-#sobre-mi .row > .columns:not(.col-skill) p {
+#about .row > .columns:not(.col-skill) p {
     color: #000;
     font-size: 2rem;
     line-height: 1.45;
@@ -412,11 +412,11 @@ section .row .columns{
     margin-bottom: 2rem;
 }
 
-#sobre-mi .row > .columns:not(.col-skill) p strong {
+#about .row > .columns:not(.col-skill) p strong {
     font-weight: 800;
 }
 
-#sobre-mi .row > .columns:not(.col-skill) .mas-info {
+#about .row > .columns:not(.col-skill) .mas-info {
     border-top: 1px solid #222;
     padding-top: 2rem;
     margin-top: 1rem;
@@ -472,7 +472,7 @@ section .row .col-skill h4{
     margin-top: 1rem;
 }
 
-#sobre-mi .col-skill > h3 {
+#about .col-skill > h3 {
     text-align: center;
     font-size: 4.5rem;
     font-weight: 700;
@@ -480,36 +480,36 @@ section .row .col-skill h4{
     margin-bottom: 2rem;
 }
 
-#sobre-mi .col-skill .skill {
+#about .col-skill .skill {
     justify-content: center;
     gap: 1rem 2rem;
     margin-bottom: 2rem;
 }
 
 @media (max-width: 760px) {
-    #sobre-mi .row {
+    #about .row {
         grid-template-columns: 1fr;
     }
 
-    #sobre-mi .about-photo-slot {
+    #about .about-photo-slot {
         min-height: 0;
         height: min(24rem, 65vw);
         margin-top: 0;
     }
 
-    #sobre-mi .lanyard-deferred {
+    #about .lanyard-deferred {
         min-height: 0;
     }
 
-    #sobre-mi .about-photo-slot img {
+    #about .about-photo-slot img {
         min-height: 0;
     }
 
-    #sobre-mi {
+    #about {
         padding: 5rem 6% 4rem;
     }
 
-    #sobre-mi .row > .columns:not(.col-skill) p {
+    #about .row > .columns:not(.col-skill) p {
         font-size: 1.7rem;
     }
 }
@@ -727,7 +727,7 @@ section .row .columns .skill img:hover {
         justify-content: center;
     }
 
-    #sobre-mi .row > .columns:not(.col-skill) .mas-info {
+    #about .row > .columns:not(.col-skill) .mas-info {
         justify-content: flex-start;
         align-items: flex-start;
     }

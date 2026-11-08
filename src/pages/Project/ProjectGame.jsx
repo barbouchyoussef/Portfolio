@@ -31,7 +31,7 @@ const ProjectGame = () => {
 
 
             <main>
-                <section className="proyectos mas-proyect" id="proyectos">
+                <section className="proyectos mas-proyect" id="projects">
                     <h1 className="heading">
                         <FormattedMessage
                             id='projects'

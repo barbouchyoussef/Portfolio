@@ -16,7 +16,7 @@ const Content = () => {
 
     return (
     <div className="contenido">
-        <section className={`inicio${particlesReady ? ' particles-ready' : ''}`} id="inicio">
+        <section className={`inicio${particlesReady ? ' particles-ready' : ''}`} id="home">
             <ParticleHeaderBg onReady={handleParticlesReady} />
             {!particlesReady && (
                 <div className="hero-loading" role="status" aria-label="Loading hero">
@@ -81,7 +81,7 @@ const Content = () => {
                     </a>
                 </div>
 
-                <Link to="sobre-mi" href="#sobre-mi">
+                <Link to="about" href="#about">
                     <div className="scroll-down"></div>
                 </Link>
             </div>

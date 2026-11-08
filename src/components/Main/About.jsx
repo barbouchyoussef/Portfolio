@@ -52,7 +52,7 @@ const DeferredLanyard = (props) => {
 };
 
 const About = () => (
-    <section className="sobre-mi" id="sobre-mi">
+    <section className="sobre-mi" id="about">
         <header className="section-heading about-heading">
             <span className="section-kicker">
                 <FormattedMessage id="about-kicker" defaultMessage="Profile" />
@@ -104,7 +104,7 @@ const About = () => (
                     />
                 </p>
                 <div className="mas-info">
-                    <a href={cv} target="_blank" rel="noopener noreferrer" download="cv.pdf" className="btn-codigo buttonDownload">
+                    <a href={cv} target="_blank" rel="noopener noreferrer" download="cv_youssef_barbouch.pdf" className="btn-codigo buttonDownload">
                         <i className="fas fa-download" aria-hidden="true"></i>
                         <FormattedMessage
                             id='btn-cv'

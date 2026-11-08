@@ -25,7 +25,7 @@ const Contact = () => {
     const revealRef = useScrollReveal();
 
     return (
-    <section ref={revealRef} className="contactos scroll-reveal" id="contactos">
+    <section ref={revealRef} className="contactos scroll-reveal" id="contact">
 
         <header className="section-heading contact-heading">
             <span className="section-kicker">

@@ -20,7 +20,7 @@ const Service = ({ fullPage = false }) => {
     <section
         ref={revealRef}
         className={`servicios scroll-reveal${fullPage ? ' servicios--page' : ''}`}
-        id="servicios"
+        id="services"
     >
         <div className="services-shell">
             <header className="section-heading services-heading">

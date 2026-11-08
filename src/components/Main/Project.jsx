@@ -76,7 +76,7 @@ const Project = () => {
     const revealRef = useScrollReveal();
 
     return (
-    <section ref={revealRef} className="proyectos scroll-reveal" id="proyectos">
+    <section ref={revealRef} className="proyectos scroll-reveal" id="projects">
         <header className="section-heading projects-heading">
             <span className="section-kicker">
                 <FormattedMessage id="projects-kicker" defaultMessage="What I've built" />

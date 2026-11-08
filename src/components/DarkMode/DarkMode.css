@@ -168,24 +168,24 @@ body.dark .sobre-mi-info p {
   color: var(--light-color);
 }
 
-body.dark #sobre-mi .row > .columns:not(.col-skill) p {
+body.dark #about .row > .columns:not(.col-skill) p {
   color: var(--light-color);
 }
 
-body.dark #sobre-mi .row > .columns:not(.col-skill) p strong {
+body.dark #about .row > .columns:not(.col-skill) p strong {
   color: var(--white);
 }
 
-body.dark #sobre-mi > .heading {
+body.dark #about > .heading {
   color: var(--white);
 }
 
-body.dark #sobre-mi .col-skill > h3,
-body.dark #sobre-mi .col-skill h4 {
+body.dark #about .col-skill > h3,
+body.dark #about .col-skill h4 {
   color: var(--white);
 }
 
-body.dark #sobre-mi .about-photo-slot {
+body.dark #about .about-photo-slot {
   background: #000;
 }
 
